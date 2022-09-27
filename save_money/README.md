@@ -2,4 +2,4 @@
 
 API 서버는 FastAPI 로 구성되었습니다.
 
-![test.zip](https://github.com/foonsoo/project/files/9657031/test.zip)
+
