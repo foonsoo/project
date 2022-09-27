@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: maildown
+spec:
+  schedule: "0 0 1 * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          imagePullSecrets: 
+          - name: ""
+          containers:
+          - name: maildown
+            image: ""
+            envFrom:
+              - secretRef:
+                  name: ""
+            command: ["python3", "main.py"]
+            volumeMounts:
+            - name: ""
+              mountPath: /
+          restartPolicy: Never
+          volumes:
+          - name: ""
+            persistentVolumeClaim:
+              claimName: ""

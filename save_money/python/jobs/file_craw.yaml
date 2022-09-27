@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: filecraw
+spec:
+  schedule: "0 0 2 * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          imagePullSecrets: 
+          - name: ""
+          containers:
+          - name: filecraw
+            image: ""
+            command: ["python3", "main.py"]
+            volumeMounts:
+            - name: your-pvc-name
+              mountPath: /
+          restartPolicy: Never
+          volumes:
+          - name: your-pvc-name
+            persistentVolumeClaim:
+              claimName: your-pvc-name

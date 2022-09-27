@@ -1,0 +1,27 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: intodb
+spec:
+  schedule: "0 0 3 * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          imagePullSecrets: 
+          - name: ""
+          containers:
+          - name: intodb
+            image: ""
+            envFrom:
+              - secretRef:
+                  name: ""
+            command: ["python3", "main.py"]
+            volumeMounts:
+            - name: your-pvc-name
+              mountPath: /
+          restartPolicy: Never
+          volumes:
+          - name: your-pvc-name
+            persistentVolumeClaim:
+              claimName: your-pvc-name

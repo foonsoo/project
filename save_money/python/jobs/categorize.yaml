@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: categorize
+spec:
+  schedule: "0 0 4 * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          imagePullSecrets: 
+          - name: ""
+          containers:
+          - name: categorize
+            image: ""
+            envFrom:
+              - secretRef:
+                  name: ""
+            command: ["python3", "main.py"]
+          restartPolicy: Never
